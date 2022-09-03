@@ -5,3 +5,4 @@ flair == 0.11.3
 snscrape==0.3.4
 plotly
 seaborn
+mplfinance
