@@ -2,9 +2,9 @@ streamlit == 1.11.1
 yfinance == 0.1.74
 tensorflow == 2.9.1
 flair == 0.11.3
-protobuf==3.19.0
 snscrape
 plotly
 seaborn
 mplfinance
 tqdm
+protobuf==3.19.0
