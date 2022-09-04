@@ -57,11 +57,12 @@ date_start = '2015-01-01'
 
 st.title('Stock Forecast App')
 
-stockname = ('GOOGLE', 'TESLA', 'MICROSOFT', 'META', 'COKA COLA', 'VISA', 'PIFIZER', 'CHEVRON', 'WALMART', 'UNITED PARCEL SERVICES')
+stockname = ('GOOGLE', 'TESLA', 'MICROSOFT', 'META', 'COKA COLA', 'VISA', 'PFIZER', 'CHEVRON', 'WALMART', 'UNITED PARCEL SERVICES')
 select_stockname = st.selectbox('Select Stock', stockname, key='1')
 
-stocks = ('GOOG', 'TSLA', 'MSFT', 'META', 'KO', 'V', 'PFE', 'CVX', 'WMT', 'UPS')
-selected_stock = st.selectbox('Select ticker symble', stocks, key='2')
+stocks_dict = {'GOOGLE':'GOOG', 'TESLA':'TSLA', 'MICROSOFT':'MSFT', 'META':'META', 'COCA COLA':'KO', 'VISA':'V', 'PFIZER':'PFE', 
+                'CHEVRON':'CVX', 'WALMART':'WMT', 'UNITED PARCEL SERVICES':'UPS'}
+selected_stock = stocks_dict[select_stockname]
 
 
 @st.cache
@@ -299,7 +300,7 @@ if download:
     def get_tweets(stock, date):
         query = "(from:${}) until:{} since:2015-01-01".format(stock, date)
         tweets = []
-        limit = 500
+        limit = 1000
 
 
         for tweet in sntwitter.TwitterSearchScraper(query).get_items():
