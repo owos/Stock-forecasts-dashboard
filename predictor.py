@@ -31,7 +31,10 @@ import yfinance as yf
 
 
 import flair
-sentiment_model = flair.models.TextClassifier.load('en-sentiment')
+def senti():
+            return flair.models.TextClassifier.load('en-sentiment')
+
+sentiment_model = senti()
 
 stopwords= set(['br', 'the', 'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", "you've",\
             "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', \
