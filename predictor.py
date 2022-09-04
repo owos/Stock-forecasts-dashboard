@@ -303,7 +303,7 @@ if download:
     def get_tweets(stock, date):
         query = "(from:${}) until:{} since:2015-01-01".format(stock, date)
         tweets = []
-        limit = 1000
+        limit = 500
 
 
         for tweet in sntwitter.TwitterSearchScraper(query).get_items():
