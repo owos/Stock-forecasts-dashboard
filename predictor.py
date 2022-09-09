@@ -268,8 +268,9 @@ if download:
         preds[preds <.6] = 0
         preds = pd.Series(preds, index=test.index, name="Predictions")
         merge = pd.concat([test["Target"], preds], axis=1)
-        if preds[0] >=.6:
-            st.write("The trned us a rise")
+        st.write(merge.head())
+        if preds[0] >= .6:
+            st.write("The trned is a rise")
         else:
             st.write("The trend is a fall")
 
