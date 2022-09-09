@@ -388,6 +388,6 @@ if download:
     sentiment=pd.DataFrame({'Sentiment':sentiment.index,'Tweets':sentiment.values})
 
 
-    fig = px.bar(sentiment, x='Sentiment', y='Tweets', color = 'Tweets', height= 500)
+    fig = px.bar(sentiment[:1000], x='Sentiment', y='Tweets', color = 'Tweets', height= 500)
     st.plotly_chart(fig)
 
