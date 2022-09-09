@@ -280,7 +280,7 @@ if download:
             predictions, preds = predict(train, test, predictors, model)
             
             all_predictions.append(predictions)
-        if preds[0] >= .6:
+            if preds[0] >= .6:
                 st.write("The trned is a rise")
             else:
                 st.write("The trend is a fall")
