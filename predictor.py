@@ -60,7 +60,7 @@ date_start = '2015-01-01'
 
 st.title('Stock Forecast App')
 
-stockname = ('GOOGLE', 'TESLA', 'MICROSOFT', 'META', 'COKA COLA', 'VISA', 'PFIZER', 'CHEVRON', 'WALMART', 'UNITED PARCEL SERVICES')
+stockname = ('GOOGLE', 'TESLA', 'MICROSOFT', 'META', 'COCA COLA', 'VISA', 'PFIZER', 'CHEVRON', 'WALMART', 'UNITED PARCEL SERVICES')
 select_stockname = st.selectbox('Select Stock', stockname, key='1')
 
 stocks_dict = {'GOOGLE':'GOOG', 'TESLA':'TSLA', 'MICROSOFT':'MSFT', 'META':'META', 'COCA COLA':'KO', 'VISA':'V', 'PFIZER':'PFE', 
@@ -268,7 +268,7 @@ if download:
         preds[preds <.6] = 0
         preds = pd.Series(preds, index=test.index, name="Predictions")
         merge = pd.concat([test["Target"], preds], axis=1)
-        st.write(merge.head())
+        st.write(merge.tail())
         if preds[0] >= .6:
             st.write("The trned is a rise")
         else:
