@@ -300,8 +300,8 @@ if download:
 
 
 
-    def get_tweets(stock, date):
-        query = "(from:${}) until:{} since:2015-01-01".format(stock, date)
+    def get_tweets(stock, date, last_date):
+        query = "(from:${}) until:{} since:{}".format(stock, date, last_date)
         tweets = []
         limit = 500
 
@@ -318,8 +318,9 @@ if download:
         df = pd.DataFrame(tweets, columns=['Date', 'User', 'Tweet'])
 
         return df
-
-    tweets = get_tweets(selected_stock, date_today)
+    df = pd.read_csv(f"stocks {selected_stock}.csv", parse_dates = ['Date'])
+    last_date= str(df.Date.dt.date[0])
+    tweets = get_tweets(selected_stock, date_today, last_date)
     #st.write(tweets)
 
     def decontracted(phrase):
@@ -375,7 +376,9 @@ if download:
     # add probability and sentiment predictions to tweets dataframe
     tweets['probability'] = probs
     tweets['sentiment'] = sentiments
-
+    tweets = pd.concat([df, tweets])
+    tweets.drop_duplicates(inplace=True)
+    tweets.to_csv(f"stocks {selected_stock}.csv", index=False)
     st.write(tweets)
 
     sentiment = tweets['sentiment'].value_counts()
