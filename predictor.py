@@ -268,14 +268,7 @@ if download:
         preds[preds <.6] = 0
         preds = pd.Series(preds, index=test.index, name="Predictions")
         merge = pd.concat([test["Target"], preds], axis=1)
-        st.write(merge.tail())
-        if preds[0] >= .6:
-            st.write("The trned is a rise")
-        else:
-            st.write("The trend is a fall")
-
-
-        return merge
+        return merge, preds
 
 
     def backtester(data, model, predictors, start=500, step=250):
@@ -284,9 +277,13 @@ if download:
         for i in range(start, data.shape[0], step):
             train = data.iloc[0:i].copy()
             test = data.iloc[i:(i+step)].copy()
-            predictions = predict(train, test, predictors, model)
+            predictions, preds = predict(train, test, predictors, model)
+            
             all_predictions.append(predictions)
-        
+        if preds[0] >= .6:
+                st.write("The trned is a rise")
+            else:
+                st.write("The trend is a fall")
         return pd.concat(all_predictions)
 
 
