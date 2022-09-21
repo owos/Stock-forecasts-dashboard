@@ -322,6 +322,7 @@ if download:
 
         return df
     df = pd.read_csv(f"stocks {selected_stock}.csv", parse_dates = ['Date'])
+            st.write(df.head())
     last_date= str(df.Date.dt.date[0])
     tweets = get_tweets(selected_stock, date_today, last_date)
     #st.write(tweets)
