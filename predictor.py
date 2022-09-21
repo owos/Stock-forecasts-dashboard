@@ -322,6 +322,7 @@ if download:
 
         return df
     df = pd.read_csv(f"stocks {selected_stock}.csv", parse_dates = ['Date'])
+    df.Date = pd.to_datetime(df.Date)
     try:
         df.Date = pd.to_datetime(df.Date)
     except:
