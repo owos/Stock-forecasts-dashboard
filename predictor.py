@@ -322,6 +322,10 @@ if download:
 
         return df
     df = pd.read_csv(f"stocks {selected_stock}.csv", parse_dates = ['Date'])
+    try:
+        df.Date = pd.to_datetime(df.Date)
+    else:
+        pass
     st.write("trying out the head")
     st.write(df.Date[0][:10][::-1])
     print(df.info())
