@@ -322,6 +322,7 @@ if download:
 
         return df
     df = pd.read_csv(f"stocks {selected_stock}.csv", parse_dates = ['Date'])
+    st.write("trying out the head")
     st.write(df.head())
     st.write(df.info())
     last_date= str(df.Date.dt.date[0])
